@@ -14,7 +14,12 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@newapi/auth": ["libs/auth/src/index.ts"],
+      "@newapi/core": ["libs/core/src/index.ts"],
+      "@newapi/course": ["libs/course/src/index.ts"],
+      "@newapi/data": ["libs/data/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

@@ -4,8 +4,8 @@
   "license": "MIT",
   "scripts": {
     "nx": "nx",
-    "start": "nx serve",
-    "build": "nx build",
+    "start": "node dist/apps/api/main.ts",
+    "build": "nx build api --prod",
     "test": "nx test",
     "lint": "nx workspace-lint && nx lint",
     "e2e": "nx e2e",
@@ -27,17 +27,61 @@
   },
   "private": true,
   "dependencies": {
+    "@nestjs/common": "^7.0.0",
+    "@nestjs/config": "^0.6.3",
+    "@nestjs/core": "^7.0.0",
+    "@nestjs/graphql": "^7.11.0",
+    "@nestjs/jwt": "^7.2.0",
+    "@nestjs/passport": "^7.1.6",
+    "@nestjs/platform-express": "^7.0.0",
+    "@prisma/client": "2.26.0",
+    "apollo-server-express": "^2.25.2",
+    "bcryptjs": "^2.4.3",
+    "graphql": "^15.5.1",
+    "graphql-tools": "^7.0.5",
+    "joi": "^17.4.0",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "~6.6.3",
     "tslib": "^2.0.0"
   },
   "devDependencies": {
+    "@nestjs/schematics": "^7.0.0",
+    "@nestjs/testing": "^7.0.0",
     "@nrwl/cli": "12.5.2",
+    "@nrwl/eslint-plugin-nx": "12.5.2",
+    "@nrwl/jest": "12.5.2",
+    "@nrwl/linter": "12.5.2",
+    "@nrwl/nest": "^12.5.2",
+    "@nrwl/node": "12.5.2",
     "@nrwl/nx-cloud": "latest",
     "@nrwl/tao": "12.5.2",
     "@nrwl/workspace": "12.5.2",
+    "@types/jest": "26.0.8",
     "@types/node": "14.14.33",
+    "@typescript-eslint/eslint-plugin": "4.19.0",
+    "@typescript-eslint/parser": "4.19.0",
     "dotenv": "8.2.0",
+    "eslint": "7.22.0",
+    "eslint-config-prettier": "8.1.0",
+    "husky": "^7.0.0",
+    "jest": "27.0.3",
+    "lint-staged": "^11.0.0",
     "prettier": "^2.3.1",
+    "prisma": "2.26.0",
+    "ts-jest": "27.0.3",
     "ts-node": "~9.1.1",
     "typescript": "~4.2.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,scss,md,ts,html,graphql}": [
+      "yarn format --uncommitted"
+    ]
   }
 }
